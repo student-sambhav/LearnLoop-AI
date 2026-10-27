@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: vectordb-backend
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/vectordb
+    username: postgres
+    password: sambhav@11052005
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+  jackson:
+    serialization:
+      indent-output: false
+
+vectordb:
+  demo-dims: 16
+  hnsw:
+    m: 16
+    ef-construction: 200
+    ef-search: 50
+
+ollama:
+  host: http://localhost:11434
+  embed-model: nomic-embed-text
+  gen-model: llama3.2
+  connect-timeout-ms: 3000
+  read-timeout-ms: 180000
